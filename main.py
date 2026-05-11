@@ -1,3 +1,4 @@
+import ipaddress
 import socket
 
 def verifica_host():
@@ -20,18 +21,19 @@ port = verifica_porta()
 host = verifica_host()
 
 if port == 1:
-    print("Porta contem letras ou caracteres especias")
+    print("Porta contém letras ou caracteres especiais")
 elif host == 1:
-    print("host invalido, nao existe")
+    print("Host inválido, não existe")
 else:
     try:
         s = socket.socket()
         s.settimeout(1)
-        resultado = s.connect_ex((host, port))
+        resultado = s((host, port))
         if resultado == 0:
-            print(f"a porta {port} esta aberta")
+            print(f"A porta {port} esta ABERTA")
         else:
-            print(f"a porta {port} esta fechada")
+            print(f"A porta {port} esta FECHADA")
         s.close()
     except OverflowError:
-        print("porta nao nao existe")
+        print("Porta não existe")
+
